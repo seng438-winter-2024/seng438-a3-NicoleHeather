@@ -1,107 +1,134 @@
 package org.jfree.data;
 
-import static org.junit.Assert.*; import org.jfree.data.Range; import org.junit.*;
+import static org.junit.Assert.*;
+import org.jfree.data.Range;
+import org.junit.*;
 
 public class GetLengthTest {
-    private Range PositiveRange;
-    private Range NegativeRange;
-    private Range OppositeRange;
-    private Range ZeroPositiveRange;
-    private Range ZeroNegativeRange;
-    private Range BothZeroRange;
-    private Range EqualNegativeRange;
-    private Range EqualPositiveRange;
-    private Range LargeRange;
-    private Range SmallRange;
-    @BeforeClass public static void setUpBeforeClass() throws Exception {
-    }
+    private Range exampleRange;
 
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+    }
 
     @Before
     public void setUp() throws Exception {
-    	//Creating 10 range objects to use for each test method.
-    	PositiveRange = new Range(5, 10);
-    	NegativeRange = new Range(-10, -5);
-    	OppositeRange = new Range(-10, 10);
-    	ZeroPositiveRange = new Range(0, 7);
-    	ZeroNegativeRange = new Range(-7, 0);
-    	BothZeroRange = new Range(0, 0);
-    	EqualNegativeRange = new Range(-10, -10);
-    	EqualPositiveRange = new Range(10, 10);
-    	LargeRange = new Range(2, 859746);
-    	SmallRange = new Range(17, 19);
+        // Creating first example range, this object will be reused for convenience.
+        exampleRange = new Range(10.93, 15.77);
     }
 
-    //This test covers if getLength returns the correct value if lower and upper are positive values, both are legal inputs. 
     @Test
-    public void getLength_PositiveRange() {
-    	//Validation.
-        assertEquals("The length should be 5", 5, PositiveRange.getLength(), .000000001d);
+    public void getLength_PositiveRange_Decimal() {
+        assertEquals("The length should be 4.84", 4.84, exampleRange.getLength(), .000000001d);
     }
 
-    //This test covers if getLength returns the correct value if lower and upper are negative values, both are legal inputs. 
     @Test
-    public void getLength_NegativeRange() {
-    	//Validation.
-    	assertEquals("The length should be 5", 5, NegativeRange.getLength(), .000000001d);
+    public void getLength_NegativeRange_Decimal() {
+        exampleRange = new Range(-15.77, -10.93);
+        assertEquals("The length should be 4.84", 4.84, exampleRange.getLength(), .000000001d);
     }
-    
-    //This test covers if getLength returns the correct value if lower is negative and upper is positive, both are legal inputs.     
+
     @Test
-    public void getLength_OppositeRange() {
-    	//Validation.
-    	assertEquals("The length should be 20", 20, OppositeRange.getLength(), .000000001d);
+    public void getLength_OppositeRange_Decimal() {
+        exampleRange = new Range(-5.48, 20.25);
+        assertEquals("The length should be 25.73", 25.73, exampleRange.getLength(), .000000001d);
     }
-    
-  //This test covers if getLength returns the correct value if lower is 0 and upper is positive, both are legal inputs. 
+
     @Test
-    public void getLength_ZeroPositiveRange() {
-    	//Validation.
-    	assertEquals("The length should be 7", 7, ZeroPositiveRange.getLength(), .000000001d);
+    public void getLength_ZeroPositiveRange_Decimal() {
+        exampleRange = new Range(0, 35.79);
+        assertEquals("The length should be 35.79", 35.79, exampleRange.getLength(), .000000001d);
     }
-    
-    //This test covers if getLength returns the correct value if lower is negative and upper is 0, both are legal inputs.
+
     @Test
-    public void getLength_ZeroNegativeRange() {
-    	//Validation.
-    	assertEquals("The length should be 7", 7, ZeroNegativeRange.getLength(), .000000001d);
+    public void getLength_ZeroNegativeRange_Decimal() {
+        exampleRange = new Range(-35.79, 0);
+        assertEquals("The length should be 35.79", 35.79, exampleRange.getLength(), .000000001d);
     }
-   
-    //This test covers if getLength returns the correct value if lower is negative and upper is positive, both are legal inputs. 
+
+    @Test
+    public void getLength_EqualNegative_Decimal() {
+        exampleRange = new Range(-13.023, -13.023);
+        assertEquals("The length should be 0", 0, exampleRange.getLength(), .000000001d);
+    }
+
+    @Test
+    public void getLength_EqualPositive_Decimal() {
+        exampleRange = new Range(13.023, 13.023);
+        assertEquals("The length should be 0", 0, exampleRange.getLength(), .000000001d);
+    }
+
+    @Test
+    public void getLength_LargeRange_Decimal() {
+        exampleRange = new Range(-99999.8888, 88888.9999);
+        assertEquals("The length should be 188888.8887", 188888.8887, exampleRange.getLength(), .000000001d);
+    }
+
+    @Test
+    public void getLength_SmallRange_Decimal() {
+        exampleRange = new Range(1.00000567, 1.00000568);
+        assertEquals("The length should be 0.00000001", 0.00000001, exampleRange.getLength(), .000000001d);
+    }
+
     @Test
     public void getLength_BothZero() {
-    	//Validation.
-    	assertEquals("The length should be 0", 0, BothZeroRange.getLength(), .000000001d);
+        exampleRange = new Range(0, 0);
+        assertEquals("The length should be 0", 0, exampleRange.getLength(), .000000001d);
     }
-    
-    //This test covers if getLength returns the correct value if lower and upper are equal positive values, both are legal inputs. 
+
     @Test
-    public void getLength_EqualPositve() {
-    	//Validation.
-    	assertEquals("The length should be 0", 0, EqualPositiveRange.getLength(), .000000001d);
+    public void getLength_PositiveRange() {
+        assertEquals("The length should be 4.84", 4.84, exampleRange.getLength(), .000000001d);
     }
-    
-    //This test covers if getLength returns the correct value if lower and upper are equal negative values, both are legal inputs. 
+
+    @Test
+    public void getLength_NegativeRange() {
+        exampleRange = new Range(-10, -5);
+        assertEquals("The length should be 5", 5, exampleRange.getLength(), .000000001d);
+    }
+
+    @Test
+    public void getLength_OppositeRange() {
+        exampleRange = new Range(-10, 10);
+        assertEquals("The length should be 20", 20, exampleRange.getLength(), .000000001d);
+    }
+
+    @Test
+    public void getLength_ZeroPositiveRange() {
+        exampleRange = new Range(0, 7);
+        assertEquals("The length should be 7", 7, exampleRange.getLength(), .000000001d);
+    }
+
+    @Test
+    public void getLength_ZeroNegativeRange() {
+        exampleRange = new Range(-7, 0);
+        assertEquals("The length should be 7", 7, exampleRange.getLength(), .000000001d);
+    }
+
     @Test
     public void getLength_EqualNegative() {
-    	//Validation.
-    	assertEquals("The length should be 0", 0, EqualNegativeRange.getLength(), .000000001d);
+        exampleRange = new Range(-10, -10);
+        assertEquals("The length should be 0", 0, exampleRange.getLength(), .000000001d);
     }
-    
-    //This test covers if getLength returns the correct value if lower is a large negative value and upper is a large positive value, both are legal inputs.
+
+    @Test
+    public void getLength_EqualPositive() {
+        exampleRange = new Range(10, 10);
+        assertEquals("The length should be 0", 0, exampleRange.getLength(), .000000001d);
+    }
+
     @Test
     public void getLength_LargeRange() {
-    	//Validation.
-    	assertEquals("The length should be 859744", 859744, LargeRange.getLength(), .000000001d);
+        exampleRange = new Range(2, 859746);
+        assertEquals("The length should be 859744", 859744, exampleRange.getLength(), .000000001d);
     }
-    
-    //This test covers if getLength returns the correct value if lower is a small positive value and upper is a small positive value, both are legal inputs.
+
     @Test
     public void getLength_SmallRange() {
-    	//Validation.
-    	assertEquals("The length should be 2", 2, SmallRange.getLength(), .000000001d);
+        exampleRange = new Range(17, 19);
+        assertEquals("The length should be 2", 2, exampleRange.getLength(), .000000001d);
     }
-   
+
     @After
     public void tearDown() throws Exception {
     }
