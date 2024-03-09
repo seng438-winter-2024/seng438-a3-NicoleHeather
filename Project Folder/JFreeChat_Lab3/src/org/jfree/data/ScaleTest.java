@@ -19,7 +19,7 @@ public class ScaleTest {
     }
     
     /**
-     * This test covers to see if the system can identify a valid value within its range
+     * This test covers to see if the system can scale the range by a valid factor
      */
     @Test
     public void scaleValidFactor() {
@@ -28,6 +28,9 @@ public class ScaleTest {
         assertEquals("Returned Range object is incorrect", expected, Range.scale(exampleRange, 10));
     }
 
+    /**
+     * This test covers to see if the system can throw an exception with an invalid factor
+     */
     @Test
     public void scaleInvalidFactor() {
         Range exampleRange = new Range(-5, 25);
