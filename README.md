@@ -13,4 +13,12 @@ Read [the assignment guideline](seng438-a3.md)
 6. Then, navigate to src -> org -> jfree -> data and right click.
 7. Click on "Coverage As" and choose JUnit Application.
 
+Or 
+
+1. Go to "File -> Open project from file system"
+2. Navigate to "Project Folder"
+3. Add the same libraries using the same method as above
+6. Then, navigate to src -> org -> jfree -> data and right click.
+7. Click on "Coverage As" and choose JUnit Application.
+   
 The coverage tool use was EclEmma, it should already be installed in your eclipse workspace as it comes with it, if not go to Help -> Eclipse Marketplace and search for EclEmma to install.
