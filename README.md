@@ -15,9 +15,9 @@ Read [the assignment guideline](seng438-a3.md)
 
 Or 
 
-1. Go to "File -> Open project from file system"
-2. Navigate to "Project Folder"
-3. Add the same libraries using the same method as above
+1. Go to "File -> Open project from file system".
+2. Navigate to "Project Folder".
+3. Add the same libraries using the same method as above if needed.
 6. Then, navigate to src -> org -> jfree -> data and right click.
 7. Click on "Coverage As" and choose JUnit Application.
    
