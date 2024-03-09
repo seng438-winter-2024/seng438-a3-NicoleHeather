@@ -17,15 +17,36 @@ public class ConstrainTest {
     	
     }
     
-    /**
-     * This test covers the equals() method using the exampleRange with a
-     * valid Range object
-     */
-    @Test
-    public void testValidObjectForMethodEquals() {
-        Range exampleRange = new Range(-1, 1);
-        assertTrue("The given object should be a valid Range object", exampleRange.equals(exampleRange));
+	@Test
+    public void constrainNormalValue() {
+        Range exampleRange = new Range(-5, 25);
+        assertTrue("returned value is incorrect", exampleRange.constrain(9.98) == 9.98);
     }
+	
+	@Test
+    public void constrainReturnLowerValue() {
+        Range exampleRange = new Range(-5, 25);
+        assertTrue("returned value is incorrect", exampleRange.constrain(-10) == -5);
+    }
+	
+	@Test
+    public void constrainReturnUpperValue() {
+        Range exampleRange = new Range(-5, 25);
+        assertTrue("returned value is incorrect", exampleRange.constrain(800) == 25);
+    }
+	
+	@Test
+    public void constrainReturnEqualLowerValue() {
+        Range exampleRange = new Range(-5, 25);
+        assertTrue("returned value is incorrect", exampleRange.constrain(-5) == -5);
+    }
+	
+	@Test
+    public void constrainReturnEqualUpperValue() {
+        Range exampleRange = new Range(-5, 25);
+        assertTrue("returned value is incorrect", exampleRange.constrain(25) == 25);
+    }
+
 
     @After
     public void tearDown() throws Exception {
