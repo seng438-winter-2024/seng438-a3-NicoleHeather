@@ -17,6 +17,9 @@ public class CombineTest {
     	
     }
     
+    /**
+     * This test covers to see if the system can combine valid range objects
+     */
 	@Test
     public void combineValidRanges() {
         Range range1 = new Range(-5, 25);
@@ -25,6 +28,9 @@ public class CombineTest {
         assertEquals("Returned Range object is incorrect", expected, Range.combine(range1, range2));
     }
 	
+    /**
+     * This test covers to see if the system can combine properly if range1 is null
+     */
 	@Test
     public void combineNullRange1() {
         Range range2 = new Range(13, 34);
@@ -32,6 +38,9 @@ public class CombineTest {
         assertEquals("Returned Range object is incorrect", expected, Range.combine(null, range2));
     }
 	
+    /**
+     * This test covers to see if the system can combine properly if range2 is null
+     */
 	@Test
     public void combineNullRange2() {
         Range range1 = new Range(-5, 25);
